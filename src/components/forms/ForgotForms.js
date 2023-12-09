@@ -4,26 +4,42 @@ import { Button, Text, TextInput } from "react-native-paper";
 
 export default function ForgotForms({ navigation }) {
   return (
-    <View styles={{ flex: 1}}>
+    <View styles={{ flex: 1,}}>
+      
+      <View style={{alignContent: "center", padding: 35,}}>
       <Text 
-      style={{fontSize: 25, justifyContent: 'center'}}
-      >Forgot Password or Email</Text>
+      style={{fontSize: 25, justifyContent: 'center', alignItems: "center"}}
+      >Forgot Password</Text>
       
       <TextInput
         mode="outlined"
-        placeholder="Email"
-        label="Email"
+        placeholder="Enter Old Password"
+        label="Enter Old Password"
         style={{ marginTop: 10 }}
-
-      />
+      />      
+      <TextInput
+      mode="outlined"
+      placeholder="Enter New Password"
+      label="Enter New Password"
+      style={{ marginTop: 10 }}
+    />
       
-      
-
-      <Button mode='contained' style={{ marginTop: 10, borderRadius: 5,}}>
-      Enter
+      <Button 
+      onPress={() => navigation.navigate("Login")}
+      icon="login" mode="contained" style={{ marginTop: 10, borderRadius: 5, }}>
+      Save
       </Button>
 
-      <Text>Back to Login <Button onPress={() => navigation.pop()}>Login</Button></Text>
+      <View
+      style={{
+        marginTop: 10,
+        alignItems: 'row',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+      }}>
+      <Text>Back to <Text style={{color:"blue", textDecorationLine: "underline",  }} onPress={() => navigation.pop()}>Login</Text></Text>
+      </View>
+      </View>
 
     </View>
   );
