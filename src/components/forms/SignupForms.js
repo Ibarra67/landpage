@@ -33,12 +33,11 @@ export default function SignupForm({ navigation }) {
         return false;
       }
 
-      const url = "http://192.168.0.1;/api/v1/register";
+      const url = "http://192.168.0.108:8000/api/v1/register";
       const data = {
         name,
         email,
         password,
-        password_confirmation: repassword,
       };
  
 
@@ -116,11 +115,18 @@ export default function SignupForm({ navigation }) {
                 disabled={loading}
                 loading={loading}
                 onPress={handleRegistration}
-                icon='account-plus' mode='contained' style={{ marginTop: 10, borderRadius: 5,}}>
+                icon='account-plus' mode='contained' 
+                style={{ marginTop: 10, borderRadius: 5,}}>
                     Register
                 </Button>
 
-                <Text variant='titleSmall' style={{marginTop: 20,}}>Already have an account? <Text style={{color:"blue", textDecorationLine: "underline"}} onPress={() => navigation.pop()}>Login</Text></Text>
+                <Text variant='titleSmall' 
+                style={{marginTop: 20,}}>Already have an account? 
+                <Text style={{color:"blue", 
+                textDecorationLine: "underline"}} 
+                onPress={() => navigation.pop()}>Login
+                </Text>
+                </Text>
 
             </View>
         );
