@@ -14,13 +14,13 @@ export default function LoginForm({ navigation }) {
   
   const handleLogin = async (values) => {
     try { 
-      const url = "http://192.168.0.108:8000/api/v1/login";
+      const url = "http://192.168.0.108:8000/api/v1/login";//
       const result = await fetchServices.postData(url, values);
 
       if (result.message != null) {
         showToast(result?.message);
       } else {
-        navigation.navigate("Home");
+        navigation.navigate("Main");
       }
     } catch (e) {
       console.debug(e.toString());
@@ -63,31 +63,29 @@ export default function LoginForm({ navigation }) {
         placeholder="Email"
         label="Email"
         style={{ marginTop: 10 }}
-        defaultValue={values.email}
-              value={values.email}
-              keyboardType="email-address"
-              onChangeText={handleChange("email")}
-              onBlur={handleBlur("email")}
-              error={errors.email && touched.email}
-              onFocus={() => setTouched({ email: true }, false)}
-        />
-
+        edefaultValue={values.email}
+        value={values.email}
+        keyboardType="email-address"
+        onChangeText={handleChange("email")}
+        onBlur={handleBlur("email")}
+        error={errors.email && touched.email}
+        onFocus={() => setTouched({ email: true }, false)}
+      />
       {errors.email && touched.email && (
-              <HelperText type="error" visible={errors.email}>
-                {errors.email}
-              </HelperText>
+        <HelperText type="error" visible={errors.email}>
+          {errors.email}
+        </HelperText>
       )}
-
       <TextInput
         mode="outlined"
         placeholder="Password"
         label="Password"
-        secureTextEntry={showPass}
-        right={
-          <TextInput.Icon
-            icon={!showPass ? "eye" : "eye-off"}
-            onPress={() => setShowPass(!showPass)}
-          />
+        secureTextEntry={!showPass}
+              right={
+                <TextInput.Icon
+                  icon={showPass ? "eye" : "eye-off"}
+                  onPress={() => setShowPass(!showPass)}
+                />
         }
         style={{ marginTop: 10 }}
         value={values.password}
@@ -95,12 +93,12 @@ export default function LoginForm({ navigation }) {
               onBlur={handleBlur("password")}
               error={errors.password && touched.password}
               onFocus={() => setTouched({ password: true }, false)}
-        />
-        {errors.password && touched.password && (
+            />
+            {errors.password && touched.password && (
               <HelperText type="error" visible={errors.password}>
                 {errors.password}
               </HelperText>
-        )}
+            )}
 
       <View
         style={{
@@ -113,21 +111,17 @@ export default function LoginForm({ navigation }) {
       </View>
 
       <Button 
-       loading={isSubmitting}
-       disabled={isSubmitting}
-       onPress={handleSubmit}
-       icon="login"
-       mode="contained"
-       style={{ marginTop: 10 }}
-      >
-       Login
+      loading={isSubmitting}
+      disabled={isSubmitting}
+      onPress={handleSubmit}
+      icon="login"
+      mode="contained"
+      style={{ marginTop: 10 }}>
+        Login
       </Button>
 
       <Text style={{marginTop: 10,}}> Don't have any account ?
-      <Text style={{color:"blue", textDecorationLine: "underline",}} disabled={isSubmitting}
-              onPress={() => navigation.navigate("Register")}
-              icon="account-plus"
-              mode="contained">
+      <Text style={{color:"blue", textDecorationLine: "underline",}} onPress={() => navigation.navigate("Register")} icon="account-plus">
         Signup
       </Text>
       </Text>
